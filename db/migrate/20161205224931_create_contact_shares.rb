@@ -7,7 +7,10 @@ class CreateContactShares < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_column :contacts, :created_at, :updated_at
+    add_column :contacts, :created_at, :datetime
+    add_column :contacts, :updated_at, :datetime
     add_index :contact_shares, [:contact_id, :user_id], unique: true
+    add_index :contact_shares, :contact_id
+    add_index :contact_shares, :user_id
   end
 end
