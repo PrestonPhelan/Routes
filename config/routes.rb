@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   #resources :users
-  resources :users, :contacts, only: [:create, :update, :show, :destroy, :index]
+  resources :users, only: [:create, :update, :show, :destroy, :index] do
+    resources :contacts, only: :index
+  end
+  
+  resources :contacts, only: [:create, :update, :show, :destroy]
   resources :contact_shares, only: [:create, :destroy]
 
 
